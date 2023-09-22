@@ -1,7 +1,8 @@
-// DOM Elements
+// DOM elements
 const form = document.querySelector("form");
 const formConfirmation = document.querySelector(".form-confirmation");
 
+// Form elements
 const firstNameElement = document.getElementById('first');
 const lastNameElement = document.getElementById('last');
 const emailElement = document.getElementById("email");
@@ -38,11 +39,9 @@ function lastValidation() {
 function emailValidation() {
     let regex = RegExp("[a-z0-9._-]+@[a-z0-9._-]+\.[a-z0-9._-]+");
     if (regex.test(emailElement.value)) {
-        console.log("email ok");
         emailElement.parentElement.setAttribute("data-error-visible", "false");
         return true;
     } else {
-        console.log("email pas ok");
         emailElement.parentElement.setAttribute("data-error", "Veuillez entrer une adresse email valide.");
         emailElement.parentElement.setAttribute("data-error-visible", "true");
     }
@@ -51,7 +50,6 @@ function emailValidation() {
 function quantityValidation() {
     let regex = RegExp('^[0-9]+$');
     if (regex.test(quantityElement.value)) {
-        console.log("quantité ok");
         quantityElement.parentElement.setAttribute("data-error-visible", "false");
         return true;
     } else {
@@ -85,9 +83,10 @@ function checkbox1Validation() {
 
 // Validate
 function validate() {
-    
+    // Running each validation function
     const isValid = firstValidation() && lastValidation() && emailValidation() && quantityValidation() && locationValidation() && checkbox1Validation();
 
+    // If valid : fill formDatas with form values
     if (isValid) {
             // Form values
             let formDatas = {
@@ -98,8 +97,9 @@ function validate() {
                 location: document.querySelector('input[name="location"]:checked').value,
                 checkbox1: document.getElementById("checkbox1").checked,
                 checkbox2: document.getElementById("checkbox2").checked
-            }        
-            console.log(formDatas);
+            }
+            
+            // Display confirmation
             form.classList.add("hidden");
             formConfirmation.classList.add("validation");
     }
