@@ -1,5 +1,6 @@
 // DOM Elements
 const form = document.querySelector("form");
+const formConfirmation = document.querySelector(".form-confirmation");
 
 const firstNameElement = document.getElementById('first');
 const lastNameElement = document.getElementById('last');
@@ -99,6 +100,8 @@ function validate() {
                 checkbox2: document.getElementById("checkbox2").checked
             }        
             console.log(formDatas);
+            form.classList.add("hidden");
+            formConfirmation.classList.add("validation");
     }
 }
 
