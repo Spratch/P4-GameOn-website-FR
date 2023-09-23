@@ -90,14 +90,15 @@ function validate() {
     if (isValid) {
             // Form values
             let formDatas = {
-                firstName: document.getElementById("first").value,
-                lastName: document.getElementById("last").value,
-                email: document.getElementById("email").value,
-                quantity: document.getElementById("quantity").value,
+                firstName: firstNameElement.value,
+                lastName: lastNameElement.value,
+                email: emailElement.value,
+                quantity: quantityElement.value,
                 location: document.querySelector('input[name="location"]:checked').value,
-                checkbox1: document.getElementById("checkbox1").checked,
-                checkbox2: document.getElementById("checkbox2").checked
+                checkbox1: checkbox1Element.checked,
+                checkbox2: checkbox2Element.checked
             }
+            console.log("formDatas : ", formDatas);
             
             // Display confirmation
             form.classList.add("hidden");
