@@ -46,6 +46,27 @@ function emailValidation() {
         emailElement.parentElement.setAttribute("data-error-visible", "true");
     }
 }
+// Birthdate
+function birthdateValidation() {
+    // Get today's date
+    const date = new Date();
+    let year = date.getFullYear() - 13;
+    let month = String(date.getMonth()+1).padStart(2,"0");
+    let day = date.getDate();
+    let minimumDate = new Date(year,month,day);
+
+    // Get birthdate
+    let birthdate = new Date(birthdateElement.value);
+
+    // Compare
+    if (birthdate<minimumDate) {
+        birthdateElement.parentElement.setAttribute("data-error-visible", "false");
+        return true;
+    } else {
+        birthdateElement.parentElement.setAttribute("data-error", "Vous devez avoir plus de 13 ans.");
+        birthdateElement.parentElement.setAttribute("data-error-visible", "true");
+    }
+}
 // Quantity
 function quantityValidation() {
     let regex = RegExp('^[0-9]+$');
@@ -84,7 +105,7 @@ function checkbox1Validation() {
 // Validate
 function validate() {
     // Running each validation function
-    const isValid = firstValidation() && lastValidation() && emailValidation() && quantityValidation() && locationValidation() && checkbox1Validation();
+    const isValid = firstValidation() && lastValidation() && emailValidation() && birthdateValidation() && quantityValidation() && locationValidation() && checkbox1Validation();
 
     // If valid : fill formDatas with form values
     if (isValid) {
